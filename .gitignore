@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+DocMaster\ AI/node_modules/
+docmaster-backend/node_modules/
+DocMaster%20AI/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+docmaster-backend/dist/
+DocMaster\ AI/android/build/
+DocMaster\ AI/android/app/build/
+DocMaster\ AI/ios/build/
+DocMaster\ AI/ios/Pods/
+DocMaster\ AI/test.bundle
+
+# Environment secrets and credentials
+.env
+DocMaster\ AI/.env
+docmaster-backend/.env
+docmaster-backend/*.json
+!docmaster-backend/package.json
+!docmaster-backend/tsconfig.json
+
+# Local configurations / uploads
+uploads/
+docmaster-backend/uploads/
+docmaster-backend/logs/
+docmaster-backend/*.log
+*.pdf
+*.jpg
+*.jpeg
+*.png
+!play_store_*.png

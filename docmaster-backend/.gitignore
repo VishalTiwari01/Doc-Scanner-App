@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Environment variables & secrets
+.env
+*.json
+!package.json
+!tsconfig.json
+
+# Logs
+logs/
+*.log
+
+# Uploads and temporary files
+uploads/
+*.pdf
+*.jpg
+*.jpeg
+*.png

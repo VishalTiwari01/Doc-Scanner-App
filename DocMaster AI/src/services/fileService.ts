@@ -4,11 +4,7 @@ import RNFS from 'react-native-fs';
 import { Platform, PermissionsAndroid } from 'react-native';
 import { store } from '../redux/store';
 
-// API base URL — 10.0.2.2 reaches host machine from Android emulator
-const API_BASE_URL =
-  Platform.OS === 'android'
-    ? 'http://10.0.2.2:5000/api/v1'
-    : 'http://localhost:5000/api/v1';
+const API_BASE_URL = 'https://docmaster-backend.onrender.com/api/v1';
 
 export class FileService {
   /**

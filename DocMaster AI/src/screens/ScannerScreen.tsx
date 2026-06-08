@@ -215,7 +215,7 @@ export const ScannerScreen = () => {
       if (result.downloadUrl.startsWith('http')) {
         return result.downloadUrl;
       }
-      return `http://10.0.2.2:5000${result.downloadUrl}`;
+      return `https://docmaster-backend.onrender.com${result.downloadUrl}`;
     }
     return scannedImage?.uri;
   };

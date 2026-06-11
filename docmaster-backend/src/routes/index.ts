@@ -18,4 +18,13 @@ router.use('/history', historyRouter);
 router.use('/image', imageCompressRouter);
 
 
+router.get('/status', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'DocMaster API v1 is fully operational',
+    timestamp: new Date(),
+    env: process.env.NODE_ENV || 'development'
+  });
+});
+
 export default router;

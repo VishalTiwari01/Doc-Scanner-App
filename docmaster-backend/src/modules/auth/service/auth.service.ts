@@ -151,7 +151,6 @@ export class AuthService {
 
     return {
       message: 'Password reset OTP generated successfully',
-      otp, // return OTP in response body for demo/testing convenience!
     };
   }
 

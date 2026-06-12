@@ -92,9 +92,6 @@ export class AuthController {
       res.status(200).json({
         success: true,
         message: result.message,
-        data: {
-          otp: result.otp,
-        },
       });
     } catch (error) {
       next(error);

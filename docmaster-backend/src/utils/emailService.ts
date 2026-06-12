@@ -9,8 +9,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: config.email.user,
     pass: config.email.pass,
-  },
-  family: 4, // Force IPv4 to prevent ENETUNREACH IPv6 issues on Render
+  }
 } as nodemailer.TransportOptions);
 
 /**

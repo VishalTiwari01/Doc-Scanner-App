@@ -145,7 +145,9 @@ export class AuthService {
     try {
       // Send OTP via Nodemailer email utility
       await sendOtpEmail(email, otp);
+      console.log(`\n✅ SUCCESS: OTP email was successfully sent to ${email} via Nodemailer!\n`);
     } catch (emailError: any) {
+      console.log(`\n❌ ERROR: Failed to send OTP email to ${email}: ${emailError.message}\n`);
       logger.warn(`[AuthService] Non-fatal email error sending to ${email}: ${emailError.message}. Proceeding with response for demo/testing convenience.`);
     }
 

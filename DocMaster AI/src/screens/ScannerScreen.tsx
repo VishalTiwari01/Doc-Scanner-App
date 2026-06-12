@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Image, Clipboard, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, Image, Clipboard, ActivityIndicator, TouchableOpacity, Platform } from 'react-native';
 import { Text, Card, IconButton, Portal, Dialog, Button, ProgressBar, List, RadioButton, Divider } from 'react-native-paper';
 import { launchCamera, Asset } from 'react-native-image-picker';
 import { FileService } from '../services/fileService';
@@ -215,7 +215,10 @@ export const ScannerScreen = () => {
       if (result.downloadUrl.startsWith('http')) {
         return result.downloadUrl;
       }
-      return `https://docmaster-backend.onrender.com${result.downloadUrl}`;
+      const host = __DEV__
+        ? (Platform.OS === 'android' ? 'http://10.0.2.2:5000' : 'http://localhost:5000')
+        : 'https://docmaster-backend.onrender.com';
+      return `${host}${result.downloadUrl}`;
     }
     return scannedImage?.uri;
   };

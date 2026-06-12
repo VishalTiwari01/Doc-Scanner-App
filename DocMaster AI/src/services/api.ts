@@ -3,7 +3,9 @@ import { Platform } from 'react-native';
 import { RootState } from '../redux/store';
 import { setTokens, logout } from '../redux/slices/authSlice';
 
-export const API_BASE_URL = 'https://docmaster-backend.onrender.com/api/v1';
+export const API_BASE_URL = __DEV__
+  ? (Platform.OS === 'android' ? 'http://10.0.2.2:5000/api/v1' : 'http://localhost:5000/api/v1')
+  : 'https://docmaster-backend.onrender.com/api/v1';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,

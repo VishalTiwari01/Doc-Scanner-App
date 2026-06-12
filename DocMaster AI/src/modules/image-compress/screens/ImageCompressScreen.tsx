@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ScrollView, Image, TouchableOpacity, Alert, ActivityIndicator, Platform } from 'react-native';
 import { Text, Card, List, Button, Portal, Dialog, ProgressBar, IconButton, Divider } from 'react-native-paper';
 import { launchImageLibrary, launchCamera, Asset } from 'react-native-image-picker';
 import { FileService } from '../../../services/fileService';
@@ -187,7 +187,10 @@ export const ImageCompressScreen = () => {
       if (result.downloadUrl.startsWith('http')) {
         return result.downloadUrl;
       }
-      return `https://docmaster-backend.onrender.com${result.downloadUrl}`;
+      const host = __DEV__
+        ? (Platform.OS === 'android' ? 'http://10.0.2.2:5000' : 'http://localhost:5000')
+        : 'https://docmaster-backend.onrender.com';
+      return `${host}${result.downloadUrl}`;
     }
     return selectedImage?.uri;
   };
@@ -216,6 +219,7 @@ export const ImageCompressScreen = () => {
               mode="outlined"
               icon="camera-outline"
               style={styles.pickBtn}
+              
             />
           </View>
         )}

@@ -30,25 +30,19 @@ export const ForgotPasswordScreen = ({ navigation }: any) => {
     setErrorMsg(null);
     try {
       const response = await forgotPassword({ email }).unwrap();
+      console.log('Forgot Password API Response:', response); // Debugging API response
+      
       if (response.success) {
-        // Show the OTP in an alert for easy copy-paste/demo verification
-        const generatedOtp = response.data?.otp;
-        setSuccessMsg(`OTP sent successfully!`);
-        Alert.alert(
-          'Verification Code (Demo)',
-          `Use this OTP code to reset your password:\n\n${generatedOtp}`,
-          [{
-            text: 'Copy & Continue',
-            onPress: () => {
-              setOtp(generatedOtp || '');
-              setPhase('reset');
-            }
-          }]
-        );
+        console.log('Email sent successfully according to API.');
+        setSuccessMsg('OTP sent successfully! Please check your email.');
+        // Transition to reset phase without pre-filling OTP
+        setPhase('reset');
       } else {
+        console.log('Failed to request OTP:', response.message);
         setErrorMsg(response.message || 'Failed to request OTP');
       }
     } catch (err: any) {
+      console.log('Error from API when requesting OTP:', err);
       setErrorMsg(err.data?.message || 'Email address not found');
     }
   };

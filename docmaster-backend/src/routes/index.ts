@@ -22,6 +22,7 @@ router.get('/status', (req, res) => {
   res.status(200).json({
     success: true,
     message: 'DocMaster API v1 is fully operational',
+    version: '1.0.3-email-bypass',
     timestamp: new Date(),
     env: process.env.NODE_ENV || 'development'
   });

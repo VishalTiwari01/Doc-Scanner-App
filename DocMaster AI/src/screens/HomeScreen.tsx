@@ -73,20 +73,6 @@ export const HomeScreen = ({ navigation }: any) => {
         .slice(0, 4)
     : [];
 
-  const formatDate = (dateStr: string) => {
-    try {
-      const d = new Date(dateStr);
-      return d.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-    } catch {
-      return '';
-    }
-  };
-
   const getOperationLabel = (type: string) => {
     if (type === 'pdf_compress') return 'PDF Compress';
     if (type === 'jpg_to_pdf') return 'JPG to PDF';

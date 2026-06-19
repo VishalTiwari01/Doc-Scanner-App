@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, Image, Clipboard, Alert, Platform } from 'react-native';
-import { Text, Card, Button, Portal, Dialog, ProgressBar, List, IconButton, Divider } from 'react-native-paper';
+import { Text, Card, Button, Portal, Dialog, ProgressBar, IconButton, Divider } from 'react-native-paper';
 import { launchImageLibrary, launchCamera, Asset } from 'react-native-image-picker';
 import { useProcessOCRMutation, OCRResponse } from '../services/ocrApi';
 import { CustomButton } from '../../../components/CustomButton';

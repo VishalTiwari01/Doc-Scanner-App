@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, View, Image, FlatList } from 'react-native';
 import { Text, Card, IconButton, Portal, Dialog, Button, ProgressBar } from 'react-native-paper';
 import { launchImageLibrary, launchCamera, Asset } from 'react-native-image-picker';
 import { useAppDispatch } from '../../../redux/store';

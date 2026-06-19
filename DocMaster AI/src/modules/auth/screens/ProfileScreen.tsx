@@ -11,7 +11,7 @@ import { CustomInput } from '../../../components/CustomInput';
 import { CustomButton } from '../../../components/CustomButton';
 import { theme } from '../../../styles/theme';
 
-export const ProfileScreen = ({ navigation }: any) => {
+export const ProfileScreen = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();

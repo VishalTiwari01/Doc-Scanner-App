@@ -1,3 +1,4 @@
+/* eslint-env jest */
 // Mock react-native-documents picker
 jest.mock('@react-native-documents/picker', () => ({
   pick: jest.fn(),

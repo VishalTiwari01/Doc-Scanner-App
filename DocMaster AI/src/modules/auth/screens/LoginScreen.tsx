@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity } from 'react-native';
-import { Text, Card, Snackbar, ActivityIndicator } from 'react-native-paper';
+import { Text, Card, Snackbar } from 'react-native-paper';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginInput } from '../utils/validation';
@@ -15,7 +15,7 @@ export const LoginScreen = ({ navigation }: any) => {
   console.log('DOCMASTER: LoginScreen rendering...');
   const dispatch = useAppDispatch();
   const [login, { isLoading }] = useLoginMutation();
-  const [secureText, setSecureText] = useState(true);
+  const [secureText] = useState(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const { control, handleSubmit } = useForm<LoginInput>({

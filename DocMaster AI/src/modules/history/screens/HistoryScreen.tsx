@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, ActivityIndicator, TouchableOpacity, Platform, Alert } from 'react-native';
-import { Text, Card, Avatar, Divider, Portal, Dialog, Button, Paragraph, Chip, IconButton } from 'react-native-paper';
+import { StyleSheet, View, FlatList, ActivityIndicator, Platform, Alert } from 'react-native';
+import { Text, Card, Avatar, Divider, Portal, Dialog, Button, Chip, IconButton } from 'react-native-paper';
 import { useGetHistoryQuery, useDeleteHistoryItemMutation, HistoryItem } from '../services/historyApi';
 import { FileService } from '../../../services/fileService';
 import { theme } from '../../../styles/theme';
@@ -75,11 +75,25 @@ export const HistoryScreen = () => {
       mimeType = isPng ? 'image/png' : 'image/jpeg';
     }
     
-    await FileService.shareFile(
-      item.resultUrl,
-      mimeType,
-      `Share ${item.fileName}`
-    );
+    try {
+      // Because Cloudinary restricts public PDF delivery by default (ACL failure),
+      // we must download the file locally using our proxy, then share the actual file.
+      const savedPath = await FileService.saveFileToDevice(
+        item.resultUrl,
+        `Share_${item.fileName}`
+      );
+      
+      const shareUrl = Platform.OS === 'android' ? `file://${savedPath}` : savedPath;
+      
+      await FileService.shareFile(
+        shareUrl,
+        mimeType,
+        `Share ${item.fileName}`
+      );
+    } catch (error) {
+      console.error("Error sharing file:", error);
+      Alert.alert("Share Failed", "Could not prepare file for sharing.");
+    }
   };
 
   const renderHistoryItem = ({ item }: { item: HistoryItem }) => {
@@ -132,7 +146,7 @@ export const HistoryScreen = () => {
               color={iconColor}
             />
           )}
-          right={(props) => (
+          right={() => (
             <Chip style={styles.badge} textStyle={styles.badgeText}>
               {badgeText}
             </Chip>

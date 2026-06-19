@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, Image, Clipboard, ActivityIndicator, TouchableOpacity, Platform } from 'react-native';
-import { Text, Card, IconButton, Portal, Dialog, Button, ProgressBar, List, RadioButton, Divider } from 'react-native-paper';
+import { Text, Card, IconButton, Portal, Dialog, Button, RadioButton, Divider } from 'react-native-paper';
 import { launchCamera, Asset } from 'react-native-image-picker';
 import { FileService } from '../services/fileService';
 import { useImageToPDFMutation } from '../modules/image-to-pdf/services/imageToPdfApi';

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity, Alert, ActivityIndicator, Platform } from 'react-native';
-import { Text, Card, List, Button, Portal, Dialog, ProgressBar, IconButton, Divider } from 'react-native-paper';
+import { StyleSheet, View, ScrollView, Image, ActivityIndicator, Platform } from 'react-native';
+import { Text, Card, List, Button, Portal, Dialog, IconButton, Divider } from 'react-native-paper';
 import { launchImageLibrary, launchCamera, Asset } from 'react-native-image-picker';
 import { FileService } from '../../../services/fileService';
 import { useCompressImageMutation } from '../services/imageCompressApi';
 import { CustomButton } from '../../../components/CustomButton';
 import { theme } from '../../../styles/theme';
-import Share from 'react-native-share';
+
 
 export const ImageCompressScreen = () => {
   const [selectedImage, setSelectedImage] = useState<Asset | null>(null);

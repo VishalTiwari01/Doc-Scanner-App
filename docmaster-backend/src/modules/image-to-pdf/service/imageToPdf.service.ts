@@ -56,8 +56,9 @@ export class ImageToPdfService {
       if (isCloudinaryConfigured()) {
         logger.info(`Uploading compiled PDF ${outputFileName} to Cloudinary...`);
         const uploadResult = await cloudinary.uploader.upload(outputPath, {
-          resource_type: 'auto',
+          resource_type: 'raw',
           folder: 'docmaster/compiled-pdfs',
+          public_id: outputFileName,
         });
         resultUrl = uploadResult.secure_url;
       } else {

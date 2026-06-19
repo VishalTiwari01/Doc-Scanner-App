@@ -48,8 +48,9 @@ export class CompressService {
         logger.info(`Uploading PDF ${file.originalname} to Cloudinary...`);
         // Upload to Cloudinary under 'raw' format (for PDFs and non-image assets)
         const uploadResult = await cloudinary.uploader.upload(file.path, {
-          resource_type: 'auto',
+          resource_type: 'raw',
           folder: 'docmaster/pdfs',
+          public_id: file.originalname,
         });
         originalUrl = uploadResult.secure_url;
         resultUrl = uploadResult.secure_url; // In a real system, the URL of the compressed PDF
